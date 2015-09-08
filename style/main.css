@@ -16,6 +16,10 @@
 	width: 20em;
 	height:100%;
 }
+.editSection {
+	width:inherit;
+
+}
 
 .editSectionLabel, .editSectionLabel:hover, .editSectionLabel:focus .editSectionLabel:active {
 	background-color: #4F657B;
@@ -37,4 +41,15 @@
 .page-create-label {
 	margin: 5px;
 	height: 3em;
+}
+
+
+.element-draggable {
+	background-color: #34485C;
+	color: #5B738A;
+	height: 3em;
+	text-align: center;
+	width: 8em;
+	border: 1px;
+	border-color: #263746
 }

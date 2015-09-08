@@ -20,7 +20,7 @@ define(["jquery",
 			var template = handlebars.compile(existingPageTemplate);
 			var newPageId = pages.length+1;
 			var newPageName = element.find(".new-page-name").val();
-			element.find(".editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
+			element.find(".templates-section .editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
 			element.find(".new-page-name").val("Page");
 			pages.push({id:newPageId, el:template({id:newPageId})});
 
