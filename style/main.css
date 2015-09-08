@@ -13,14 +13,14 @@
 
 .editBar, .editBar:hover {
 	background-color: #2C3E50;
-	
+	width: 20em;
 	height:100%;
 }
 
 .editSectionLabel, .editSectionLabel:hover, .editSectionLabel:focus .editSectionLabel:active {
 	background-color: #4F657B;
 	text-align: center;
-	width: 20em;
+
 	color: #97AEC5;
 
 }
