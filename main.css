@@ -12,3 +12,7 @@
 	color: white;
 
 }
+
+.editSectionContainer .btn{
+	max-height: 3em;
+}
