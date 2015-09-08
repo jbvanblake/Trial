@@ -1,9 +1,10 @@
 define(["jquery",
  		"handlebars",
-  		"text!views/page.html"], 
+ 		"pagesWidget",
+  		"text!views/mainPageTemplate.html"], 
 
-	function(jquery, handlebars, pageTemplate){
-	var template = handlebars.compile(pageTemplate);
+	function(jquery, handlebars, pagesWidget, pageTemplate){
 
-	$("body").append(template());
+		pagesWidget.create($('body'));
+
 });

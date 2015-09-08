@@ -1,0 +1,4 @@
+<div id="page-holder-{{id}}" class="btn-group" role="group" aria-label="...">
+	  <button type="button" class="btn btn-default">Page</button>
+	  <button type="button" class="btn btn-default"> X </button>
+	</div>
