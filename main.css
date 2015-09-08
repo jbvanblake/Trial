@@ -1,5 +1,9 @@
 .header {
 	background-color: rgb(41, 144, 234);
+	height: 2em;
+	color: white;	
+	font-size: bold;
+	padding: 5px;
 }
 
 
@@ -7,12 +11,30 @@
 	float:left;
 }
 
-.editSectionLabel {
-	background-color: rgb(119, 119, 119);
-	color: white;
+.editSection, .editSection:hover {
+	background-color: #2C3E50;
+	width: 20em;
+	height:100%;
+}
+
+.editSectionLabel, .editSectionLabel:hover, .editSectionLabel:focus .editSectionLabel:active {
+	background-color: #4F657B;
+	text-align: center;
+
+	color: #97AEC5;
 
 }
 
-.editSectionContainer .btn{
+.editSectionContainer .btn, .editSectionContainer .btn:hover{
 	max-height: 3em;
+	background-color: #518DCA;
+	color: white;
+}
+.editSectionContainer input, .editSectionContainer button {
+	border: none;
+} 
+
+.page-create-label {
+	margin: 5px;
+	height: 3em;
 }

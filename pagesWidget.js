@@ -19,7 +19,9 @@ define(["jquery",
 		var addPage = function(event){
 			var template = handlebars.compile(existingPageTemplate);
 			var newPageId = pages.length+1;
-			element.find(".editSectionContainer").append(template({id:newPageId}));
+			var newPageName = element.find(".new-page-name").val();
+			element.find(".editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
+			element.find(".new-page-name").val("Page");
 			pages.push({id:newPageId, el:template({id:newPageId})});
 
 			element.find(".page-delete").click(removePage);
