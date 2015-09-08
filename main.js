@@ -1,16 +1,9 @@
-define(["jquery"], 
-	function(jquery){
-		alert("require");
+define(["jquery",
+ 		"handlebars",
+  		"text!views/page.html"], 
 
+	function(jquery, handlebars, pageTemplate){
+	var template = handlebars.compile(pageTemplate);
+
+	$("body").append(template());
 });
-
-
-// $(document).ready(function(){
-// 	//alert("main");
-// 	// var pageTemplate = $("#pageTemplate").html()
-// 	// var template = Handlebars.compile(pageTemplate);
-
-
-// 	//$("body").append(template());
-
-// });
