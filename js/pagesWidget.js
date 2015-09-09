@@ -1,13 +1,11 @@
 define(["jquery",
 		"underscore",
- 		"handlebars", 		
- 		"interact",
+ 		"handlebars", 	
   		"text!views/pagesWidgetTemplate.html",
   		"text!views/existingPageTemplate.html"], 
 
-	function(jquery, _, handlebars, interact, pageTemplate, existingPageTemplate){
+	function(jquery, _, handlebars, pageTemplate, existingPageTemplate){
 		var pages = [], element;
-		var interact = require('interact');
 
 		var initialize = function(el){
 			element = el;
