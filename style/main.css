@@ -85,6 +85,26 @@
 .element-label {
 	margin:10px;
 }
+.nav-span {
+ 	color: #97AABC;
+    background: none;
+    border: 2px solid #97AABC; 
+    border-radius: 3px;
+    display: inline;
+    padding: 1em 4em;
+    margin: 1em;
+}
+
+.nav-span.selected-nav{
+    color: white;
+    background-color: #97AABC;
+    border: 2px solid #8498AC;
+}
+
+.nav-container {
+    width: 100%;
+    margin:2em;
+}
 
 .pretty-text {
 	color:#4F657B;

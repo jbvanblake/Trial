@@ -5,9 +5,11 @@ define(["jquery",
   		"text!views/existingPageTemplate.html"], 
 
 	function(jquery, _, handlebars, pageTemplate, existingPageTemplate){
-		var pages = [], element;
+		var pages = [], element,  onAdd, onRemove;
 
-		var initialize = function(el){
+		var initialize = function(el, onAddCallback, onRemoveCallback){
+			onAdd = onAddCallback;
+			onRemove =onRemoveCallback;
 			element = el;
 			var wholePage = handlebars.compile(pageTemplate);
 			var html = wholePage();
@@ -22,15 +24,21 @@ define(["jquery",
 			var newPageName = element.find(".new-page-name").val();
 			element.find(".templates-section .editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
 			element.find(".new-page-name").val("Page");
-			pages.push({id:newPageId, el:template({id:newPageId})});
+
+			var pageObject = {id:newPageId, el:template({id:newPageId}), name:newPageName};
+
+			pages.push(pageObject);
+			onAdd (pageObject);
 
 			element.find(".page-delete").click(removePage);
+
 
 		}
 
 		var removePage = function(event){
 			var pageId = $(event.target.parentElement).data("id");
 			element.find("[data-id=" + pageId + "]").remove();
+			onRemove(pageId);
 		}
 
 		return {
