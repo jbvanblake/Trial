@@ -24,6 +24,10 @@
 	width:inherit;
 
 }
+.editSectionContainer {
+	width:inherit;
+
+}
 
 .editSectionLabel, .editSectionLabel:hover, .editSectionLabel:focus .editSectionLabel:active {
 	background-color: #4F657B;
@@ -51,11 +55,12 @@
 .element-draggable {
 	background-color: #34485C;
 	color: #5B738A;
-	height: 3em;
+	height: 10em;
 	text-align: center;
-	width: 8em;
+	width: 50%;
 	border: 1px;
-	border-color: #263746
+	border-color: #21313F;
+	padding: 35px;
 }
 
 .pageContainer {
@@ -73,6 +78,10 @@
 	border:none;
 	outline:none;
 }
+.element-label {
+	margin:10px;
+}
+
 .pretty-text {
 	color:#4F657B;
 }
