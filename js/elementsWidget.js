@@ -19,7 +19,7 @@ define(["jquery",
 			$(".pageContainer")
 			createDropZoneContainer();	
 
-			createElementDraggableAndResizeable(".element-draggable");
+			createElementDraggableAndResizeable(".draggable");
 				
 		};
 
@@ -86,8 +86,6 @@ define(["jquery",
 			});
 
 		};
-
-
 
 		var createElementDraggableAndResizeable = function(selector){
 

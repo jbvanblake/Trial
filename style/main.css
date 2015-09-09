@@ -58,9 +58,13 @@
 	height: 10em;
 	text-align: center;
 	width: 50%;
-	border: 1px;
-	border-color: #21313F;
-	padding: 35px;
+    box-sizing: border-box;
+    padding: 35px;
+    border: 1px solid #223240;
+}
+.element-draggable:hover {
+	background-color: #3E5266;
+
 }
 
 .pageContainer {
