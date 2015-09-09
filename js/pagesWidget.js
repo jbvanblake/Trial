@@ -2,7 +2,7 @@ define(["jquery",
 		"underscore",
  		"handlebars", 		
  		"interact",
-  		"text!views/templatesTemplate.html",
+  		"text!views/pagesWidgetTemplate.html",
   		"text!views/existingPageTemplate.html"], 
 
 	function(jquery, _, handlebars, interact, pageTemplate, existingPageTemplate){

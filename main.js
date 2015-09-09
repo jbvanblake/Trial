@@ -1,12 +1,13 @@
 define(["jquery",
  		"handlebars",
- 		"pagesWidget",
+ 		"js/pagesWidget",
+ 		"js/elementsWidget",
   		"text!views/mainPageTemplate.html"], 
 
-	function(jquery, handlebars, pagesWidget, pageTemplate){
+	function(jquery, handlebars, pagesWidget, elementsWidget, pageTemplate){
 		var mainPage = handlebars.compile(pageTemplate);
 		$('body').append(mainPage());
-		pagesWidget.create($('.pageContainer'));
-		// elementsWidget.create($('body'));
+		pagesWidget.create($('.editBar'));
+		elementsWidget.create($('.editBar'));
 
 });
