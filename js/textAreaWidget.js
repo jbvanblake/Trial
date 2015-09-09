@@ -14,6 +14,9 @@ define(["jquery",
 
 			element.find(".close-text").click(close);
 
+			element.hover(function(ev){$(ev.target).find("img").show();},function(ev){$(ev.target).find("img").hide();})
+
+
 		};	
 		var close = function(event){
 			if($(event.target.parentElement.parentElement).hasClass("warned")){
