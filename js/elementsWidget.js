@@ -2,10 +2,11 @@ define(["jquery",
 		"underscore",
  		"handlebars", 		
  		"interact",
+ 		"js/textAreaWidget",
   		"text!views/elementsWidgetTemplate.html",
   		"text!views/existingPageTemplate.html"], 
 
-	function(jquery, _, handlebars, interact, elementsWidgetTemplate){
+	function(jquery, _, handlebars, interact, textAreaWidget, elementsWidgetTemplate){
 		var pages = [], element;
 		var interact = require('interact');
 
@@ -60,7 +61,8 @@ define(["jquery",
 
 					switch(typeDrop){
 						case "text":
-							$(event.target).append("<div><textArea></textArea></div>");
+							textAreaWidget.create($(event.target));
+							// $(event.target).append("<div><textArea></textArea></div>");
 							break;
 						case "nav":
 							$(event.target).append("<div><textArea></textArea></div>");

@@ -4,7 +4,7 @@
 
 .header {
 	background-color: rgb(41, 144, 234);
-	height: 2em;
+	height: 3.5em;
 	color: white;	
 	font-size: bold;
 	padding: 5px;
@@ -67,4 +67,12 @@
 	width: 60%;
 	height:100%;
 	transition: background-color 0.3s;
+}
+
+[contenteditable="true"]:active, [contenteditable="true"]:focus{
+	border:none;
+	outline:none;
+}
+.pretty-text {
+	color:#4F657B;
 }
