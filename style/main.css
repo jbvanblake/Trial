@@ -14,6 +14,10 @@
 .fl {
 	float:left;
 }
+.fr {
+	float:right;
+}
+
 .center {
 	text-align: center;
 }
@@ -97,7 +101,15 @@
     padding: 1em 4em;
     margin: 1em;
 }
-
+.text-area {
+	border: 2px dashed #8FC7FF;
+    box-sizing: border-box;
+    height: 10%;  
+    margin: 1em;
+}
+.text-area.warned {
+	border: 2px dashed red;
+}
 .nav-span.selected-nav{
     color: white;
     background-color: #97AABC;
