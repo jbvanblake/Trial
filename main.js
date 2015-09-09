@@ -4,7 +4,9 @@ define(["jquery",
   		"text!views/mainPageTemplate.html"], 
 
 	function(jquery, handlebars, pagesWidget, pageTemplate){
-
-		pagesWidget.create($('body'));
+		var mainPage = handlebars.compile(pageTemplate);
+		$('body').append(mainPage());
+		pagesWidget.create($('.pageContainer'));
+		// elementsWidget.create($('body'));
 
 });
