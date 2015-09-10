@@ -97,9 +97,7 @@ define(["jquery",
 				// enable inertial throwing
 			    inertia: true,
 			    onmove: dragMoveListener
-			}).resizable({
-    			edges: { left: true, right: true, bottom: true, top: true }
-  			}).on('resizemove', function (event) {
+			}).on('resizemove', function (event) {
 			    var target = event.target,
 			        x = (parseFloat(target.getAttribute('data-x')) || 0),
 			        y = (parseFloat(target.getAttribute('data-y')) || 0);
@@ -137,6 +135,7 @@ define(["jquery",
 			target.setAttribute('data-y', y);
 		}
 		var updatePages = function(newPages){
+
 			pages = newPages;
 			navWidget.update(newPages);
 		}
