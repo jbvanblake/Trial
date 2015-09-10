@@ -9,15 +9,35 @@ define(["jquery",
 	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, pageTemplate){
 		var pages=[];
 		var onAdd = function(page){
-			if(_.filter(pages, function(p){ return p.id === page.id;}).length == 0){
 
-				pages.push(page);
-				elementsWidget.update(pages);
+			var xhr = createCORSRequest('POST', 'http://localhost:8080/WeeblyTrialProject/api/pages');
+			if (!xhr) {
+			  throw new Error('CORS not supported');
 			}
+
+			xhr.onload = function(){
+				
+			}
+			xhr.send(page);
+			pages.push(page);
+			elementsWidget.update(pages);
+
 		};
 
 		var onRemove = function(pageId){
 			pages = _.filter(pages, function(p){return p.id !== pageId;});
+			var xhr = createCORSRequest('DELETE', 'http://localhost:8080/WeeblyTrialProject/api/page/' + pageId);
+			if (!xhr) {
+			  throw new Error('CORS not supported');
+			}
+
+			xhr.setRequestHeader("Content-Type","application/json");
+
+			xhr.onload = function(){
+			}
+			xhr.send();
+
+
 			elementsWidget.update(pages);
 		};	
 
@@ -53,6 +73,9 @@ define(["jquery",
 
 		xhr.onload = function(){
 			pages = JSON.parse(xhr.responseText);
+			if(pages.length ==0){
+				pages = [{pageName:"PAGE", id:1}];
+			}
 		
 
 

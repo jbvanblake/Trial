@@ -15,30 +15,30 @@ define(["jquery",
 			var wholePage = handlebars.compile(pageTemplate);
 			element = $(wholePage());
 			parent.append(element);
-
-			
-				addPage(null,"PAGE");
+			element.find(".page-create-icon").click(addPage);
 
 			_.forEach(pages, function(page){
-				addPage(null,page.pageName);
+				addPage(null,page);
 			});
 
-
 		};
-		var addPage = function(event, manualPageName){
+		var addPage = function(event, manualPageAdd){
 			var template = handlebars.compile(existingPageTemplate);
-			var newPageId = pages.length+1;
-			var newPageName = manualPageName ? manualPageName : element.find(".new-page-name").text();
+			var newPageId = manualPageAdd ? manualPageAdd.id : pages.length+1;
+			var newPageName = manualPageAdd ? manualPageAdd.pageName : element.find(".new-page-name").text();
 			element.find(".editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
 			element.find(".new-page-name").text("ADD NEW PAGE");
 
-			var pageObject = {id:newPageId, html:template({id:newPageId}), name:newPageName};
+			var pageObject = {id:newPageId, html:template({id:newPageId}), pageName:newPageName};
 
-			pages.push(pageObject);
-			onAdd (pageObject);
+			if(!manualPageAdd){
 
-			element.find(".page-delete").click(removePage);
-			element.find(".page-edit").click(editName);
+				// pages.push(pageObject);
+				onAdd (pageObject);
+			}
+
+			element.find(".page-delete[data-id=" + newPageId + "]").click(removePage);
+			element.find(".page-edit[data-id=" + newPageId + "]").click(editName);
 
 
 		}
