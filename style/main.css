@@ -82,7 +82,7 @@
 
 .existing-page-label {
 	color: #45596E;
-	border:	2px	solid #518DCA;
+	border:	2px	solid transparent;
 	border-radius: 4px;
 	margin: 20px;
 	height: 2.2em;

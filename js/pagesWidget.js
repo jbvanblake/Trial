@@ -7,11 +7,12 @@ define(["jquery",
 	function(jquery, _, handlebars, pageTemplate, existingPageTemplate){
 		var pages = [], element,  onAdd, onRemove;
 
-		var initialize = function(el, loadedPages, onAddCallback, onRemoveCallback){
-			onAdd = onAddCallback;
+		var initialize = function(el, loadedPages, onAddCallback, onUpdateCallback, onRemoveCallback){
+			onAdd = onAddCallback,
 			pages = loadedPages,
 			parent = el;
 			onRemove =onRemoveCallback;
+			onUpdate = onUpdateCallback;
 			var wholePage = handlebars.compile(pageTemplate);
 			element = $(wholePage());
 			parent.append(element);
@@ -40,10 +41,23 @@ define(["jquery",
 			element.find(".page-delete[data-id=" + newPageId + "]").click(removePage);
 			element.find(".page-edit[data-id=" + newPageId + "]").click(editName);
 
+			
+
+
 
 		}
 		var editName = function(event){
 			var pageName = $(event.target.parentElement.parentElement).attr("contenteditable", true);
+			$(event.target.parentElement.parentElement).get(0).addEventListener("input", function(e) {
+			    var newName = $(event.target.parentElement.parentElement).find(".page-name").text()
+			    var pageId = $(event.target).data("id");
+
+			    var updatedPage = _.find(pages,function(p){return p.id === pageId});
+			    updatedPage.pageName = newName;
+
+			    onUpdate(updatedPage);
+
+			}, false);
 		};
 
 		var removePage = function(event){

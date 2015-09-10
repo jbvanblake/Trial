@@ -29,6 +29,25 @@ define(["jquery",
 
 		};
 
+		var onUpdate = function(page){
+
+			var xhr = createCORSRequest('POST', 'http://localhost:8080/WeeblyTrialProject/api/pages');
+			if (!xhr) {
+			  throw new Error('CORS not supported');
+			}
+
+			xhr.onload = function(){
+				
+			}
+			var pageData = "id=" + page.id + "&pageName=" + page.pageName + "&html=";
+
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+			xhr.send(pageData);
+			elementsWidget.update(pages);
+
+		};
+
 		var onRemove = function(pageId){
 			pages = _.filter(pages, function(p){return p.id !== pageId;});
 			var deleteRequest = createCORSRequest('GET', 'http://localhost:8080/WeeblyTrialProject/api/page/' + pageId);
@@ -89,7 +108,10 @@ define(["jquery",
 			$('body').append(mainPage());
 
 
-			pagesWidget.create($('.editBar'), pages, onAdd ,onRemove);
+			pagesWidget.create($('.editBar'), pages, onAdd , onUpdate, onRemove);
+
+
+
 			elementsWidget.create($('.editBar'), pages);
 
 			//Create First Page 
