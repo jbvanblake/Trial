@@ -16,6 +16,9 @@ define(["jquery",
 			parent.append(element);
 
 			element.find(".page-create-icon").click(addPage);
+			element.find(".new-page-name").text("PAGE");
+			element.find(".page-create-icon").click();
+
 
 		};
 		var addPage = function(event){

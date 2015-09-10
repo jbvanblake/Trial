@@ -15,7 +15,6 @@ define(["jquery",
 
 			var html = wholePage(pageNamesObject);
 			element.append(html);
-
 		};
 		var update = function(newPages){
 			pages=newPages;

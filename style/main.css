@@ -65,6 +65,10 @@
 	float: right;
 }
 
+.page-create-label:active {
+
+}
+
 .page-create-label {
 	color: #45596E;
 	border:	2px	solid #45596E;
