@@ -9,8 +9,11 @@ define(["jquery",
 	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, pageTemplate){
 		var pages=[];
 		var onAdd = function(page){
-			pages.push(page);
-			elementsWidget.update(pages);
+			if(_.filter(pages, function(p){ return p.id === page.id;}).length == 0){
+
+				pages.push(page);
+				elementsWidget.update(pages);
+			}
 		};
 
 		var onRemove = function(pageId){
@@ -49,8 +52,7 @@ define(["jquery",
 
 
 		xhr.onload = function(){
-			alert(xhr.responseText);
-			pages = JSON.parse(responseText);
+			pages = JSON.parse(xhr.responseText);
 		
 
 
@@ -58,7 +60,7 @@ define(["jquery",
 			$('body').append(mainPage());
 
 
-			pagesWidget.create($('.editBar'), onAdd ,onRemove);
+			pagesWidget.create($('.editBar'), pages, onAdd ,onRemove);
 			elementsWidget.create($('.editBar'), pages);
 
 			//Create First Page 

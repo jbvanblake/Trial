@@ -7,28 +7,32 @@ define(["jquery",
 	function(jquery, _, handlebars, pageTemplate, existingPageTemplate){
 		var pages = [], element,  onAdd, onRemove;
 
-		var initialize = function(el, onAddCallback, onRemoveCallback){
+		var initialize = function(el, loadedPages, onAddCallback, onRemoveCallback){
 			onAdd = onAddCallback;
+			pages = loadedPages,
 			parent = el;
 			onRemove =onRemoveCallback;
 			var wholePage = handlebars.compile(pageTemplate);
 			element = $(wholePage());
 			parent.append(element);
 
-			element.find(".page-create-icon").click(addPage);
-			element.find(".new-page-name").text("PAGE");
-			element.find(".page-create-icon").click();
+			
+				addPage(null,"PAGE");
+
+			_.forEach(pages, function(page){
+				addPage(null,page.pageName);
+			});
 
 
 		};
-		var addPage = function(event){
+		var addPage = function(event, manualPageName){
 			var template = handlebars.compile(existingPageTemplate);
 			var newPageId = pages.length+1;
-			var newPageName = element.find(".new-page-name").text();
+			var newPageName = manualPageName ? manualPageName : element.find(".new-page-name").text();
 			element.find(".editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
 			element.find(".new-page-name").text("ADD NEW PAGE");
 
-			var pageObject = {id:newPageId, el:template({id:newPageId}), name:newPageName};
+			var pageObject = {id:newPageId, html:template({id:newPageId}), name:newPageName};
 
 			pages.push(pageObject);
 			onAdd (pageObject);
