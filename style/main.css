@@ -104,8 +104,11 @@
 	background-color: #3E5266;
 
 }
+.title {
+	color:#4F657B;
+}
 
-.pageContainer {
+.page-container {
 	background-color: white;
 	border: dashed 3px transparent;
 	border-radius: 4px;

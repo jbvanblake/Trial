@@ -28,7 +28,7 @@ define(["jquery",
 
 
 		var createDropZoneContainer = function(){
-			interact('.pageContainer').dropzone({
+			interact('.page-container').dropzone({
 				// Require a 75% element overlap for a drop to be possible
 				overlap: 0.75,
 
@@ -75,7 +75,7 @@ define(["jquery",
 							imageWidget.create($(event.target));
 							break;
 						case "title":
-							$(event.target).append("<div contenteditable='true'><h1>New Header</h1></div>");
+							$(event.target).append("<div class='title' contenteditable='true'><h1>Add Title Here</h1></div>");
 							break;
 					}
 
