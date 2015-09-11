@@ -13,14 +13,32 @@ define(["jquery",
 			var wholePage = handlebars.compile(navWidgetTemplate),
 			pageNamesObject = {pageNames:newPages};
 			pages = newPages;
-			element = el;
+			element = el;	
 			pageNamesObject.pageNames[0].selected = true;
-
-			element.append(wholePage(pageNamesObject));
-
+			element.append(wholePage(pageNamesObject));	
 			activate(element);
 		},
 		activate = function(parent){
+			var realId =  false,
+			routePageId,
+			paramRegex = /pageId=(\d*)(?:.*)/g,
+			match = paramRegex.exec(location.search);
+
+			if(match){
+				routePageId  = parseInt(match[1]);
+				_.forEach(pages,function(p){
+					if(p.id === routePageId){
+						realId = true;
+					}
+				});
+			}
+			if(realId){				
+				element.find(".nav-span").removeClass("selected-nav");
+				element.find(".nav-span[data-id=" + routePageId + "]").addClass("selected-nav");
+			}
+
+
+
 			parent.find(".nav-span").click(swapNav);
 		},
 
