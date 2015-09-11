@@ -47,9 +47,14 @@
 	background: none
 }
 
+.editSectionContainer .existing-page-label.active-label {
+	background-color: #518DCA;
+}
+
 .editSectionContainer .existing-page-label , .editSectionContainer .existing-page-label :hover{
 	max-height: 3em;
-	background-color: #518DCA;
+	
+	background-color: #4F657B;
 	color: white;
 }
 
@@ -124,6 +129,15 @@
 	border:none;
 	outline:none;
 }
+
+.new-page-name:active, .new-page-name:focus{
+	border:none;
+	outline:none;
+	color:white
+}
+
+
+
 .element-label {
 	margin:10px;
 }

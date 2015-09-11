@@ -17,6 +17,9 @@ define(["jquery",
 			pageNamesObject.pageNames[0].selected = true;
 			element.append(wholePage(pageNamesObject));	
 			activate(element);
+
+			$(".existing-page-label").removeClass("active-label");
+				$(".existing-page-label[data-id=" + pages[0].id + "]").addClass("active-label");
 		},
 		activate = function(parent){
 			var realId =  false,
@@ -35,6 +38,11 @@ define(["jquery",
 			if(realId){				
 				element.find(".nav-span").removeClass("selected-nav");
 				element.find(".nav-span[data-id=" + routePageId + "]").addClass("selected-nav");
+
+
+
+				$(".existing-page-label").removeClass("active-label");
+				$(".existing-page-label[data-id=" + routePageId + "]").addClass("active-label");
 			}
 
 
@@ -45,8 +53,10 @@ define(["jquery",
 		swapNav = function(event){
 			var selectedPageId = $(event.target).data("id");
 			element.find(".nav-span").removeClass("selected-nav");
-
 			element.find(".nav-span[data-id=" + selectedPageId + "]").addClass("selected-nav");
+
+			$(".existing-page-label").removeClass("active-label");
+			$(".existing-page-label[data-id=" + selectedPageId + "]").addClass("active-label");
 		},
 		update = function(newPages){
 			var wholePage = handlebars.compile(navWidgetTemplate),

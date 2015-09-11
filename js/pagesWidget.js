@@ -46,6 +46,8 @@ define(["jquery",
 			element.find(".page-delete[data-id=" + newPageId + "]").click(removePage);
 			element.find(".page-edit[data-id=" + newPageId + "]").click(editName);
 
+
+			//Hover Styling
 			element.find(".page-delete[data-id=" + newPageId + "]").hover(
 				function(e){$(e.target).attr("src","resources/Sprites/closeNormal.png")},
 				function(e){$(e.target).attr("src","resources/Sprites/closeHover.png")});
@@ -53,6 +55,7 @@ define(["jquery",
 			element.find(".page-edit[data-id=" + newPageId + "]").hover(
 				function(e){$(e.target).attr("src","resources/Sprites/pencilNormal.png")},
 				function(e){$(e.target).attr("src","resources/Sprites/pencilHover.png")});
+
 			element.find(".existing-page-label[data-id=" + newPageId + "]").hover(
 				function(e){
 					$(e.target).find(".page-delete").show();
@@ -63,7 +66,6 @@ define(["jquery",
 					$(e.target).find(".page-edit").hide();
 
 				});
-
 
 		},
 		editName = function(event){
