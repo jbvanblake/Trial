@@ -13,7 +13,14 @@ define(["jquery",
 			var wholePage = handlebars.compile(imageWidgetTemplate);
 			var html = wholePage();
 			element.append(html);
-			element.find(".image-container").dropzone({ url: "/file/post" });
+			element.find(".image-container").dropzone({ url: "http://localhost:8080/WeeblyTrialProject/api/page/img" , init:function(){
+				this.on("sending", function(file){
+					element.find(".add-image-image").hide();				
+					element.find(".add-image-label").hide();
+
+					element.find(".image-container").removeClass("image-container");
+				});
+			}});
 
 		};
 
