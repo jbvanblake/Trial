@@ -23,10 +23,10 @@ define(["jquery",
 			parent.find(".close-text").click(close);
 
 
-			if(parent.hasClass("pretty-text")){
-				parent.find(".text-area").hover(
-				function(ev){$(ev.target).find("img").show();},
-				function(ev){$(ev.target).find("img").hide();})
+			if(parent.hasClass("text-area")){
+				parent.hover(
+					function(ev){$(ev.target).find("img").show();},
+					function(ev){$(ev.target).find("img").hide();})
 
 				_.forEach(parent.find(".pretty-text"), function(el){
 					$(el).get(0).addEventListener("input", function(e){
