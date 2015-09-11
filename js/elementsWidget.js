@@ -9,10 +9,11 @@ define(["jquery",
   		"text!views/existingPageTemplate.html"], 
 
 	function(jquery, _, handlebars, interact, textAreaWidget, navWidget, imageWidget, elementsWidgetTemplate){
-		var pages = [], element;
-		var interact = require('interact');
+		var pages = [], 
+		element,
+		interact = require('interact'),
 
-		var initialize = function(el, newPages){
+		initialize = function(el, newPages){
 			pages = newPages;
 			element = el;
 			var content = handlebars.compile(elementsWidgetTemplate);
@@ -24,10 +25,8 @@ define(["jquery",
 
 			createElementDraggableAndResizeable(".draggable");
 				
-		};
-
-
-		var createDropZoneContainer = function(){
+		},
+		createDropZoneContainer = function(){
 			interact('.page-container').dropzone({
 				// Require a 75% element overlap for a drop to be possible
 				overlap: 0.75,
@@ -89,9 +88,8 @@ define(["jquery",
 				}
 			});
 
-		};
-
-		var createElementDraggableAndResizeable = function(selector){
+		},
+		createElementDraggableAndResizeable = function(selector){
 
 			interact(selector).draggable({
 				// enable inertial throwing
@@ -117,8 +115,8 @@ define(["jquery",
 			    target.setAttribute('data-y', y);
 
   			});
-		};
-		var dragMoveListener = function(event) {
+		},
+		dragMoveListener = function(event) {
 			var target = event.target,
 			    // keep the dragged position in the data-x/data-y attributes
 			    x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -133,12 +131,12 @@ define(["jquery",
 			// update the position attributes
 			target.setAttribute('data-x', x);
 			target.setAttribute('data-y', y);
-		}
-		var updatePages = function(newPages){
+		},
+		updatePages = function(newPages){
 
 			pages = newPages;
 			navWidget.update(newPages);
-		}
+		};
 
 		
 		return {

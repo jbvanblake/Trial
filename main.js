@@ -8,23 +8,21 @@ define(["jquery",
   		"text!views/mainPageTemplate.html"], 
 
 	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, RestClient, pageTemplate){
-		var pages=[];
-		var onAdd = function(page){
+		var pages=[],
+		onAdd = function(page){
 			RestClient.sendRequest('POST', 'http://localhost:8080/WeeblyTrialProject/api/pages', "id=" + page.id + "&pageName=" + page.pageName + "&html=");
 
 			pages.push(page);
 			elementsWidget.update(pages);
 
-		};
-
-		var onUpdate = function(page){
+		},
+		onUpdate = function(page){
 
 			RestClient.sendRequest('POST', 'http://localhost:8080/WeeblyTrialProject/api/pages', "id=" + page.id + "&pageName=" + page.pageName + "&html=");
 ;			elementsWidget.update(pages);
 
-		};
-
-		var onRemove = function(pageId){
+		},
+		onRemove = function(pageId){
 			pages = _.filter(pages, function(p){return p.id !== pageId;});
 
 			//Cross domain REST calls make DELETE method hard for some reason... made this instead
@@ -33,22 +31,17 @@ define(["jquery",
 
 			elementsWidget.update(pages);
 
-		};
-		var onloadCallback = function(xhr, data){
+		},
+		onloadCallback = function(xhr, data){
 			pages = JSON.parse(xhr.responseText);
 			if(pages.length ==0){
 				pages = [{pageName:"PAGE", id:1}];
 			}
-		
-
 
 			var mainPage = handlebars.compile(pageTemplate);
 			$('body').append(mainPage());
 
-
 			pagesWidget.create($('.editBar'), pages, onAdd , onUpdate, onRemove);
-
-
 
 			elementsWidget.create($('.editBar'), pages);
 
