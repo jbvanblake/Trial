@@ -11,7 +11,7 @@ define(["jquery",
 			wholePage = handlebars.compile(settingsTemplate);
 			element.append(wholePage());
 
-			element.find("img").click(swapImg)
+			element.find(".site-grid-container img").click(swapImg)
 		},
 		swapImg = function(e){
 			var off = $(e.target).attr("src") === "resources/Sprites/toggleOff.png";
