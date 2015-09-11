@@ -15,6 +15,7 @@ define(["jquery",
 			el.append(element);
 
 			activate(element, onUpdate);
+			onUpdate();
 
 		},
 		activate = function(parent, onUpdateCallback){

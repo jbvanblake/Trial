@@ -64,6 +64,12 @@ define(["jquery",
 
 			textAreaWidget.activate($(".page-container"), elementsWidget.elementsHaveChanged);
 
+			_.forEach($(".title"), function(el){
+				$(el).get(0).addEventListener("input", function(e) {
+							   elementsWidget.elementsHaveChanged();
+							}, false);
+			});
+
 			//Remove stale nav and image-container at top.
 			$($(".nav-container")[1]).remove();
 			$($(".image-container")[1]).remove();
