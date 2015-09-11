@@ -48,7 +48,7 @@ define(["jquery",
 
 					switch(typeDrop){
 						case "text":
-							textAreaWidget.create($(event.target));
+							textAreaWidget.create($(event.target), onUpdate());
 							break;
 						case "nav":
 							if(pages.length>0){
@@ -60,6 +60,13 @@ define(["jquery",
 							break;
 						case "title":
 							$(event.target).append("<div class='title' contenteditable='true'><h1>Add Title Here</h1></div>");
+
+							$(event.target).find(".title").get(0).addEventListener("input", function(e) {
+							   onUpdate();
+							}, false);
+
+
+
 							break;
 					}
 					onUpdate();

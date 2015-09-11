@@ -3,11 +3,12 @@ define(["jquery",
  		"js/pagesWidget",
  		"js/elementsWidget",
  		"js/navWidget",
- 		"js/imageWidget",		
+ 		"js/imageWidget",
+ 		"js/textAreaWidget",		
  		"js/RestClientHelper",
   		"text!views/mainPageTemplate.html"], 
 
-	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, RestClient, pageTemplate){
+	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, textAreaWidget, RestClient, pageTemplate){
 		var pages=[],
 		onAdd = function(page){
 			RestClient.sendRequest('POST',
@@ -58,9 +59,10 @@ define(["jquery",
 			navWidget.create($(".page-container"), pages);
 			
 			imageWidget.create($(".page-container"));
-			// $(".page-container").append("<div class='title' contenteditable='true'><h1>Add Title Here</h1></div>");
 
 			$(".page-container").append(pages[0].html);
+
+			textAreaWidget.activate($(".page-container"), elementsWidget.elementsHaveChanged);
 
 			//Remove stale nav and image-container at top.
 			$($(".nav-container")[1]).remove();

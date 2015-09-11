@@ -37,7 +37,8 @@ define(["jquery",
 		
 		return {
 			create:initialize,
-			update: updatePages
+			update: updatePages,
+			elementsHaveChanged : elementsHaveChanged
 		};
 
 		

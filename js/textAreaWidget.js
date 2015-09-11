@@ -4,26 +4,62 @@ define(["jquery",
   		"text!views/textAreaWidgetTemplate.html"], 
 
 	function(jquery, _, handlebars, textAreaWidgetTemplate){
-		var pages = [], element;
+		var pages = [], element, onUpdate;
 
-		var initialize = function(el){
+		var initialize = function(el, onUpdateCallback){
+			onUpdate = onUpdateCallback;
 
+			
 			var content = handlebars.compile(textAreaWidgetTemplate),
 			element = $(content());
 			el.append(element);
 
-			element.find(".close-text").click(close);
+			activate(element, onUpdate);
 
-			element.hover(
+		},
+		activate = function(parent, onUpdateCallback){
+			onUpdate = onUpdateCallback
+			parent.find(".close-text").click(close);
+
+
+			if(parent.hasClass("pretty-text")){
+				parent.find(".text-area").hover(
 				function(ev){$(ev.target).find("img").show();},
 				function(ev){$(ev.target).find("img").hide();})
 
-		};	
-		var close = function(event){
+				_.forEach(parent.find(".pretty-text"), function(el){
+					$(el).get(0).addEventListener("input", function(e){
+								   onUpdate();
+								}, false);
+				});
+			}
+			else{
+
+				parent.find(".text-area").hover(
+					function(ev){$(ev.target).find("img").show();},
+					function(ev){$(ev.target).find("img").hide();})
+
+				_.forEach(parent.find(".pretty-text"), function(el){
+					$(el).get(0).addEventListener("input", function(e){
+								   onUpdate();
+								}, false);
+				});
+
+			}
+
+			
+
+
+
+		},
+		close = function(event){
 			if($(event.target.parentElement.parentElement).hasClass("warned")){
 				$(event.target.parentElement.parentElement).fadeTo( "slow" , 0, function() {
 				    // Animation complete.
 					$(event.target.parentElement.parentElement).remove();
+					
+					onUpdate();
+
 				  });
 			}
 			else {
@@ -33,7 +69,8 @@ define(["jquery",
 		}
 
 		return {
-			create:initialize
+			create:initialize,
+			activate: activate
 		};
 
 		
