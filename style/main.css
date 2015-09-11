@@ -1,6 +1,19 @@
+@font-face {
+	font-family: Weebly;
+	font-weight: bold;
+	src: url("../resources/Font/ProximaNova-Reg.otf") format("opentype");
+}
+
+div {
+	font-family: Weebly, Helvetica, Verdana, Sans-Serif;
+}
+
+
 #entire-page {
 	height:100%;
 }
+
+
 
 .header {
 	background-color: rgb(41, 144, 234);
