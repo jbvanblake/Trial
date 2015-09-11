@@ -4,18 +4,19 @@ define(["jquery",
   		"text!views/textAreaWidgetTemplate.html"], 
 
 	function(jquery, _, handlebars, textAreaWidgetTemplate){
-		var pages = [], parent, element;
+		var pages = [], element;
 
 		var initialize = function(el){
-			parent = el;
-			var content = handlebars.compile(textAreaWidgetTemplate);
-			var element = $(content());
-			parent.append(element);
+
+			var content = handlebars.compile(textAreaWidgetTemplate),
+			element = $(content());
+			el.append(element);
 
 			element.find(".close-text").click(close);
 
-			element.hover(function(ev){$(ev.target).find("img").show();},function(ev){$(ev.target).find("img").hide();})
-
+			element.hover(
+				function(ev){$(ev.target).find("img").show();},
+				function(ev){$(ev.target).find("img").hide();})
 
 		};	
 		var close = function(event){

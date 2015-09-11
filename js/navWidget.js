@@ -4,30 +4,29 @@ define(["jquery",
   		"text!views/navWidgetTemplate.html"], 
 
 	function(jquery, _, handlebars, navWidgetTemplate){
-		var pages = [], element,  onAdd, onRemove;
+		var pages = [],
+		element,
+		onAdd,
+		onRemove, 
+		initialize = function(el, newPages){
 
-		var initialize = function(el, newPages){
+			var wholePage = handlebars.compile(navWidgetTemplate),
+			pageNamesObject = {pageNames:_.map(newPages, function(page){return {name:page.pageName};})};
 			pages = newPages;
 			element = el;
-			var wholePage = handlebars.compile(navWidgetTemplate);
-			var pageNamesObject = {pageNames:_.map(pages, function(page){return {name:page.pageName};})};
 			pageNamesObject.pageNames[0].selected = true;
 
-			var html = wholePage(pageNamesObject);
-			element.append(html);
-		};
-		var update = function(newPages){
+			element.append(wholePage(pageNamesObject));
+		},
+		update = function(newPages){
+			var wholePage = handlebars.compile(navWidgetTemplate),
+			pageNamesObject = {pageNames:_.map(newPages, function(page){return {name:page.pageName};})};
 			pages=newPages;
 
-			var wholePage = handlebars.compile(navWidgetTemplate);
-			var pageNamesObject = {pageNames:_.map(pages, function(page){return {name:page.pageName};})};
 			pageNamesObject.pageNames[0].selected = true;
 
-			var html = wholePage(pageNamesObject);
-
-
-			element.find(".nav-container").html($(html).html());
-		}
+			element.find(".nav-container").html($(wholePage(pageNamesObject)).html());
+		};
 		
 		return {
 			create:initialize,

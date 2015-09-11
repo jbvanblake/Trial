@@ -1,11 +1,12 @@
 define(["jquery",
 		"underscore",
  		"handlebars", 		
- 		"js/interactHelper",
+ 		"js/interactHelper", 		
+ 		"js/navWidget",
   		"text!views/elementsWidgetTemplate.html",
   		"text!views/existingPageTemplate.html"], 
 
-	function(jquery, _, handlebars, interactHelper, elementsWidgetTemplate){
+	function(jquery, _, handlebars, interactHelper, navWidget, elementsWidgetTemplate){
 		var pages = [], 
 		element,
 
