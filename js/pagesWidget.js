@@ -17,6 +17,7 @@ define(["jquery",
 			element = $(wholePage());
 			parent.append(element);
 			element.find(".page-create-icon").click(addPage);
+			element.find(".page-create-icon").hover(function(e){$(e.target).attr("src","resources/Sprites/plusNormal.png")},function(e){$(e.target).attr("src","resources/Sprites/plusHover.png")});
 
 			_.forEach(pages, function(page){
 				addPage(null,page);
@@ -42,6 +43,11 @@ define(["jquery",
 
 			element.find(".page-delete[data-id=" + newPageId + "]").click(removePage);
 			element.find(".page-edit[data-id=" + newPageId + "]").click(editName);
+
+
+			element.find(".page-delete[data-id=" + newPageId + "]").hover(function(e){$(e.target).attr("src","resources/Sprites/closeNormal.png")},function(e){$(e.target).attr("src","resources/Sprites/closeHover.png")});
+
+			element.find(".page-edit[data-id=" + newPageId + "]").hover(function(e){$(e.target).attr("src","resources/Sprites/pencilNormal.png")},function(e){$(e.target).attr("src","resources/Sprites/pencilHover.png")});
 
 			
 
