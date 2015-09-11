@@ -33,7 +33,7 @@ define(["jquery",
 			var template = handlebars.compile(existingPageTemplate),
 			newPageId = manualPageAdd ? manualPageAdd.id : Math.floor(Math.random() * 9999999),
 			newPageName = manualPageAdd ? manualPageAdd.pageName : element.find(".new-page-name").text(),
-			pageObject = {id:newPageId, html:template({id:newPageId}), pageName:newPageName};
+			pageObject = {id:newPageId, html:$(".page-container").html(), pageName:newPageName};
 
 			element.find(".editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
 

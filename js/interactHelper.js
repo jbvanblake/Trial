@@ -11,7 +11,7 @@ define(["jquery",
 
 		interact = require('interact'),
 
-		createDropZoneContainer = function(pages){
+		createDropZoneContainer = function(pages, onUpdate){
 			interact('.page-container').dropzone({
 				// Require a 75% element overlap for a drop to be possible
 				overlap: 0.75,
@@ -62,6 +62,7 @@ define(["jquery",
 							$(event.target).append("<div class='title' contenteditable='true'><h1>Add Title Here</h1></div>");
 							break;
 					}
+					onUpdate();
 
 
 
