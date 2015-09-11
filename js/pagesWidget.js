@@ -25,16 +25,18 @@ define(["jquery",
 		};
 		var addPage = function(event, manualPageAdd){
 			var template = handlebars.compile(existingPageTemplate);
-			var newPageId = manualPageAdd ? manualPageAdd.id : pages.length+1;
+			var newPageId = manualPageAdd ? manualPageAdd.id : Math.floor(Math.random() * 9999999);
 			var newPageName = manualPageAdd ? manualPageAdd.pageName : element.find(".new-page-name").text();
+
+
 			element.find(".editSectionContainer").prepend(template({id:newPageId, pageName:newPageName}));
+			
+
 			element.find(".new-page-name").text("ADD NEW PAGE");
 
 			var pageObject = {id:newPageId, html:template({id:newPageId}), pageName:newPageName};
 
 			if(!manualPageAdd){
-
-				// pages.push(pageObject);
 				onAdd (pageObject);
 			}
 

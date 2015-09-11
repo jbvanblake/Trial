@@ -50,20 +50,31 @@ define(["jquery",
 
 		var onRemove = function(pageId){
 			pages = _.filter(pages, function(p){return p.id !== pageId;});
-			var deleteRequest = createCORSRequest('GET', 'http://localhost:8080/WeeblyTrialProject/api/page/' + pageId);
-			if (!deleteRequest) {
+
+			//Cross domain REST calls make this hard
+
+			// var deleteRequest = createCORSRequest('GET', 'http://localhost:8080/WeeblyTrialProject/api/page/' + pageId);
+			// if (!deleteRequest) {
+			//   throw new Error('CORS not supported');
+			// }
+
+			// deleteRequest.setRequestHeader("Content-Type","x-www-form-urlencoded");
+			// deleteRequest.send();
+
+			var xhr = createCORSRequest('POST', 'http://localhost:8080/WeeblyTrialProject/api/page/delete');
+			if (!xhr) {
 			  throw new Error('CORS not supported');
 			}
 
-			deleteRequest.setRequestHeader("Content-Type","application/json");
-
-			deleteRequest.onload = function(){
-				alert("GET")
+			xhr.onload = function(){
+				
 			}
-			deleteRequest.send();
 
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
+			xhr.send("id=" + pageId);
 			elementsWidget.update(pages);
+
 		};	
 
 		var createCORSRequest = function (method, url) {
