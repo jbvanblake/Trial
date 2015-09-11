@@ -53,6 +53,17 @@ define(["jquery",
 			element.find(".page-edit[data-id=" + newPageId + "]").hover(
 				function(e){$(e.target).attr("src","resources/Sprites/pencilNormal.png")},
 				function(e){$(e.target).attr("src","resources/Sprites/pencilHover.png")});
+			element.find(".existing-page-label[data-id=" + newPageId + "]").hover(
+				function(e){
+					$(e.target).find(".page-delete").show();
+					$(e.target).find(".page-edit").show();
+				},
+				function(e){
+					$(e.target).find(".page-delete").hide();
+					$(e.target).find(".page-edit").hide();
+
+				});
+
 
 		},
 		editName = function(event){
@@ -81,6 +92,7 @@ define(["jquery",
 			}
 			else{
 				event.target.parentElement.parentElement.classList.add("warned");
+				$(event.target.parentElement.parentElement).find(".page-edit").hide();
 			}
 		};
 

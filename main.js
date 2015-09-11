@@ -63,7 +63,6 @@ define(["jquery",
 			$(".page-container").append(pages[0].html);
 
 			textAreaWidget.activate($(".page-container"), elementsWidget.elementsHaveChanged);
-			navWidget.activate($(".page-container"));
 
 			_.forEach($(".title"), function(el){
 				$(el).get(0).addEventListener("input", function(e) {

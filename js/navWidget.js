@@ -54,13 +54,6 @@ define(["jquery",
 			pages=newPages;
 
 
-			// var selectedPageId = $(element.find(".nav-span.selected-nav")[0]).data("id");
-			
-
-			// _.find(pageNamesObject.pageNames, function(page){
-			// 	page.id =selectedPageId;
-			// }).selected = true;
-
 			element.find(".nav-container").html($(wholePage(pageNamesObject)).html());
 
 			element.find(".nav-span").click(swapNav);
