@@ -39,7 +39,7 @@
 .editSectionLabel, .editSectionLabel:hover, .editSectionLabel:focus .editSectionLabel:active {
 	background-color: #4F657B;
 	text-align: center;
-
+    box-shadow: 0 4px 4px -2px #232323;
 	color: #97AEC5;
 
 }
@@ -133,7 +133,8 @@
     border-radius: 3px;
     display: inline;
     padding: 1em 4em;
-    margin: 1em;
+    margin: 2em;
+    margin-left:0;
 }
 .close-text {
 	margin:-2px;
@@ -148,11 +149,11 @@
     margin: 1em;
 }
 .text-area:hover {
-	border: 2px dashed #8FC7FF;
+	border: 2px solid #8FC7FF;
     box-sizing: border-box;
 }
 .text-area.warned:hover {
-	border: 2px dashed red;
+	border: 2px solid red;
 }
 .nav-span.selected-nav{
     color: white;
@@ -162,7 +163,9 @@
 
 .nav-container {
     width: 100%;
-    margin:2em;
+    margin:2em;    
+    margin-left: 0;
+    padding: 3em 0;
 }
 .image-container {
 	width:100%;
