@@ -4,11 +4,12 @@ define(["jquery",
  		"js/elementsWidget",
  		"js/navWidget",
  		"js/imageWidget",
- 		"js/textAreaWidget",		
+ 		"js/textAreaWidget",	
+ 		"js/settingsWidget",	
  		"js/RestClientHelper",
   		"text!views/mainPageTemplate.html"], 
 
-	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, textAreaWidget, RestClient, pageTemplate){
+	function(jquery, handlebars, pagesWidget, elementsWidget, navWidget, imageWidget, textAreaWidget, settingsWidget, RestClient, pageTemplate){
 		var pages=[],
 		onAdd = function(page){
 			RestClient.sendRequest('POST',
@@ -53,6 +54,7 @@ define(["jquery",
 			pagesWidget.create($('.editBar'), pages, onAdd , onUpdate, onRemove);
 
 			elementsWidget.create($('.editBar'), pages, onUpdate);
+			settingsWidget.create($('.editBar'));
 
 
 			//Create First Page 
@@ -60,8 +62,12 @@ define(["jquery",
 			
 			imageWidget.create($(".page-container"));
 
+			
 			$(".page-container").append(pages[0].html);
 
+			activateWidgets();
+		},
+		activateWidgets = function(){
 			textAreaWidget.activate($(".page-container"), elementsWidget.elementsHaveChanged);
 
 			_.forEach($(".title"), function(el){

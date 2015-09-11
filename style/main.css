@@ -200,3 +200,18 @@
 .pretty-text {
 	color:#4F657B;
 }
+
+.site-grid-label {
+	float: left;
+    margin: 2em;
+    color:#5E768E;
+}
+.site-grid-container img {
+	float:left;
+	margin:2em;
+	margin-left:3em;
+}
+.site-grid-container {
+	border: 2px solid #21313F;
+    height: 6em;
+}
