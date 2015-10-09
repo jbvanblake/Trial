@@ -6,23 +6,26 @@ define(["jquery",
 
 		var sendRequest = function(method, url, payload, callback){
 
-			var xhr = createCORSRequest(method, url);
-			if (!xhr) {
-			  throw new Error('CORS not supported');
-			}
-			if(callback){
-				xhr.onload = function(data){
-					callback(xhr, data);
-				}
-			}
-
-			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			if(payload){
-				xhr.send(payload);
-			}
-			else{
-				xhr.send();
-			}
+//			var xhr = createCORSRequest(method, url);
+//			if (!xhr) {
+//			  throw new Error('CORS not supported');
+//			}
+//			if(callback){
+//				xhr.onload = function(data){
+//					callback(xhr, data);
+//				}
+//			}
+//
+//			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+//			if(payload){
+//				xhr.send(payload);
+//			}
+//			else{
+//				xhr.send();
+//			}
+            if(callback){
+                callback({},{});
+            }
 
 		};
 

@@ -1,3 +1,6 @@
+body, html {
+    height:100%;
+}
 @font-face {
 	font-family: Weebly;
 	font-weight: bold;
@@ -128,10 +131,11 @@ div {
 }
 
 .page-container {
+    float:left;
 	background-color: white;
 	border: dashed 3px transparent;
 	border-radius: 4px;
-	margin: 10px auto;
+	margin: 0 2em;
 	padding: 10px;
 	width: 60%;
 	height:100%;
@@ -165,7 +169,7 @@ div {
     margin-left:0;
 }
 .close-text {
-	margin:-2px;
+	margin:-1px;
 }
 
 .text-area {
@@ -193,7 +197,7 @@ div {
     width: 100%;
     margin:2em;    
     margin-left: 0;
-    padding: 3em 0;
+    padding: 1em 0;
 }
 .image-container {
 	width:100%;

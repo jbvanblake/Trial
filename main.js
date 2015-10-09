@@ -13,7 +13,7 @@ define(["jquery",
 		var pages=[],
 		onAdd = function(page){
 			RestClient.sendRequest('POST',
-			 'http://localhost:8080/WeeblyTrialProject/api/pages',
+			 'http://localhost:8080/TrialProject/api/pages',
 			  "id=" + page.id + "&pageName=" + page.pageName + "&html=" + page.html);
 
 			pages.push(page);
@@ -27,7 +27,7 @@ define(["jquery",
 
   			elementsWidget.update(pages);
 			RestClient.sendRequest('POST',
-			 'http://localhost:8080/WeeblyTrialProject/api/pages',
+			 'http://localhost:8080/TrialProject/api/pages',
 			  "id=" + page.id + "&pageName=" + page.pageName + "&html="+ page.html);
 
 
@@ -37,7 +37,7 @@ define(["jquery",
 
 			//Cross domain REST calls make DELETE method hard for some reason... made this instead
 
-			RestClient.sendRequest('POST', 'http://localhost:8080/WeeblyTrialProject/api/page/delete', "id=" + pageId);
+			RestClient.sendRequest('POST', 'http://localhost:8080/TrialProject/api/page/delete', "id=" + pageId);
 
 			elementsWidget.update(pages);
 
@@ -80,6 +80,7 @@ define(["jquery",
 			$($(".nav-container")[1]).remove();
 			$($(".image-container")[1]).remove();
 		}
-		RestClient.sendRequest('GET', 'http://localhost:8080/WeeblyTrialProject/api/pages', undefined, onloadCallback);
+//		RestClient.sendRequest('GET', 'http://localhost:8080/TrialProject/api/pages', undefined, onloadCallback);
+        onloadCallback({responseText:"[]"},{});
 
 });
